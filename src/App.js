@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import mailSvg from "./assets/mail.svg";
 import manSvg from "./assets/man.svg";
 import womanSvg from "./assets/woman.svg";
@@ -13,7 +13,24 @@ import Footer from "./components/footer/Footer";
 const url = "https://randomuser.me/api/";
 const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
 
+
+
 function App() {
+   const[user,setUser]=useState("");
+  
+  const getUser=()=>{
+ fetch(url).then((res)=>res.json()).then((data)=>setUser(data.results[0]))
+ console.log("button clicked");
+ console.log(user)
+  }
+  
+
+  useEffect(()=>{
+getUser()
+  },[])
+
+  const{name,dob,email,age,picture,phone}=user;
+
   return (
     <main>
       <div className="block bcg-orange">
@@ -21,7 +38,7 @@ function App() {
       </div>
       <div className="block">
         <div className="container">
-          <img src={defaultImage} alt="random user" className="user-img" />
+          <img src={picture?.large} alt="random user" className="user-img" />
           <p className="user-title">My ... is</p>
           <p className="user-value"></p>
           <div className="values-list">
@@ -45,7 +62,7 @@ function App() {
             </button>
           </div>
           <div className="btn-group">
-            <button className="btn" type="button">
+            <button onClick={getUser} className="btn" type="button">
               new user
             </button>
             <button className="btn" type="button">
