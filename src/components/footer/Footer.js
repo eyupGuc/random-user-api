@@ -4,7 +4,7 @@ import designSvg from "../../assets/design.svg";
 
 const Footer = () => {
   return (
-    <div className="footer-div bg-danger">
+    <div className="footer-div">
       <a
         href="https://www.clarusway.com"
         target="_blank"

@@ -39,7 +39,7 @@ getUser()
       <div className="block">
         <div className="container">
           <img src={picture?.large} alt="random user" className="user-img" />
-          <p className="user-title">My ... is</p>
+          <p className="user-title">My name is {name?.title} {name?.first} {name?.last}</p>
           <p className="user-value"></p>
           <div className="values-list">
             <button className="icon" data-label="name">
