@@ -17,10 +17,11 @@ const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
 
 function App() {
    const[user,setUser]=useState("");
+   const[info,setInfo]=useState({})
   
   const getUser=()=>{
  fetch(url).then((res)=>res.json()).then((data)=>setUser(data.results[0]))
- console.log("button clicked");
+//  console.log("button clicked");
  console.log(user)
   }
   
@@ -29,21 +30,32 @@ function App() {
 getUser()
   },[])
 
+  useEffect(()=>{
+
+  })
+
+
+
   const{name,dob,email,age,picture,phone}=user;
+
+  const handleHeading=(e)=>{
+    console.log(e.target.alt)
+    console.log("person clicked");
+  }
 
   return (
     <main>
       <div className="block bcg-orange">
-        <img src={cwSvg} alt="cw" id="cw" />
+        {/* <img src={cwSvg} alt="cw" id="cw" /> */}
       </div>
       <div className="block">
         <div className="container">
           <img src={picture?.large} alt="random user" className="user-img" />
-          <p className="user-title">My name is {name?.title} {name?.first} {name?.last}</p>
+          <p className="user-title" >My name is {name?.title} {name?.first} {name?.last}</p>
           <p className="user-value"></p>
           <div className="values-list">
-            <button className="icon" data-label="name">
-              <img src={womanSvg} alt="user" id="iconImg" />
+            <button className="icon" data-label="name" onClick={handleHeading}>
+              <img src={womanSvg} alt="user" id="iconImg"  />
             </button>
             <button className="icon" data-label="email">
               <img src={mailSvg} alt="mail" id="iconImg" />
@@ -54,7 +66,7 @@ getUser()
             <button className="icon" data-label="street">
               <img src={mapSvg} alt="map" id="iconImg" />
             </button>
-            <button className="icon" data-label="phone">
+            <button className="icon" data-label="phone" onClick={handleHeading}>
               <img src={phoneSvg} alt="phone" id="iconImg" />
             </button>
             <button className="icon" data-label="password">
