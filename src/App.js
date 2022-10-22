@@ -40,7 +40,9 @@ getUser()
 
   const handleHeading=(e)=>{
     console.log(e.target.alt)
-    console.log("person clicked");
+    switch(e.target.alt){
+      case user:
+    }
   }
 
   return (
